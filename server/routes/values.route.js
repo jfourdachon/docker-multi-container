@@ -6,6 +6,6 @@ const valuesController = require('../controllers/values.controller')
 router.get('/all', valuesController.getAllValues);
 router.get('/current', valuesController.getCurrentValue);
 
-router.post('values', valuesController.postValue)
+router.post('/value', valuesController.postValue)
 
 module.exports = router;
