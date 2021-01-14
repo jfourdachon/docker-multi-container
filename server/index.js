@@ -5,6 +5,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
 
 const valuesRouter = require('./routes/values.route');
 
@@ -15,8 +19,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Mongoose Client Setup
-
-const DB = process.env.COMPLEX_DATABASE;
 
 mongoose.Promise = Promise;
 
@@ -41,7 +43,7 @@ mongoose.connection.on('error', (error) => {
 });
 
 const dbConnect = async () => {
-  await mongoose.connect(DB, {
+  await mongoose.connect(process.env.COMPLEX_DATABASE, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
