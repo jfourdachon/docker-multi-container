@@ -1,0 +1,11 @@
+FROM node:alpine
+WORKDIR /app
+COPY ./package.json ./
+RUN npm install
+COPY . .
+CMD ["npm", "run", "dev"]
+
+EXPOSE 8500
+
+ENV NUXT_HOST=0.0.0.0
+ENV NUXT_PORT=8500
