@@ -2,10 +2,12 @@
   <div class="container">
     <b-row>
       <label>Enter your index:</label>
-      <b-form-input v-model="index" type="number" @click="handleSubmit">
-        Submit
-      </b-form-input>
-      <b-button variant="primary"></b-button>
+      <b-form-input
+        v-model="index"
+        type="number"
+        @click="handleSubmit"
+      ></b-form-input>
+      <b-button variant="primary">Submit</b-button>
     </b-row>
     <div>
       <h3>Indices I have seen:</h3>

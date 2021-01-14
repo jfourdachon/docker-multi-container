@@ -16,5 +16,7 @@ module.exports = {
   ],
   plugins: ['prettier'],
   // add your custom rules here
-  rules: {},
+  rules: {
+    'max-len': ['error', { code: 80 }],
+  },
 }
