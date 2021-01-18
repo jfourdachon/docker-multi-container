@@ -58,7 +58,7 @@ dbConnect().catch((error) => console.error({ error }));
 app.get('/', (req, res) => {
     res.send('Hello world')
 }) 
-app.use('/api/values', valuesRouter);
+app.use('/values', valuesRouter);
 
 
 //  - START SERVER
