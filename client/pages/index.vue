@@ -37,15 +37,19 @@ export default {
   },
   methods: {
     async fetchValues() {
-      const response = await axios.get('/api/values/current')
-      this.values = response.data
+      const response = await axios.get('http://172.18.0.5:5000/values/current')
+      this.values = response.data.data
     },
     async fetchIndexes() {
-      const response = await axios.get('/api/values/all')
-      this.seenIndexes = response.data
+      const response = await axios.get('http://172.18.0.5:5000/values/all')
+      this.seenIndexes = response.data.data[0].values
     },
     async handleSubmit() {
-      await axios.post('/api/values/value', {
+      // Prod config with nginx
+      //   await axios.post('/api/values/value', {
+      //     index: this.index,
+      //   })
+      await axios.post('http://172.18.0.5:5000/values/value', {
         index: this.index,
       })
     },
