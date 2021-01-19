@@ -20,6 +20,8 @@ services:
     volumes: 
       - /app/node_modules
       - ./client:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
   worker:
     build:
       dockerfile: Dockerfile.dev
@@ -27,13 +29,14 @@ services:
     volumes: 
       - /app/node_modules
       - ./worker:/app
-  nginx:
-    restart: always
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./nginx
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-    depends_on:
-      - api
-      - client
+  # DISABLED FOR HOT RELAD IN DEV
+  # nginx:
+  #   restart: always
+  #   build:
+  #     dockerfile: Dockerfile.dev
+  #     context: ./nginx
+  #   volumes:
+  #     - ./nginx:/etc/nginx/conf.d
+  #   depends_on:
+  #     - api
+  #     - client
