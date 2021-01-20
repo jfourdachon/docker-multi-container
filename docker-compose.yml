@@ -33,13 +33,13 @@ services:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
   # DISABLED FOR HOT RELAD IN DEV
-  # nginx:
-  #   restart: always
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./nginx
-  #   volumes:
-  #     - ./nginx:/etc/nginx/conf.d
-  #   depends_on:
-  #     - api
-  #     - client
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '8080:80'
+    depends_on:
+      - api
+      - client
