@@ -1,0 +1,1 @@
+cd docker-multi-container && git pull origin main && cd api/ && npm install && pm2 stop server && pm2 start ecosystem.config.js --env production --watch && cd ../;

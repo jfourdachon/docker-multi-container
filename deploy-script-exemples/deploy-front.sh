@@ -1,0 +1,1 @@
+cd docker-multi-container && git pull origin main && cd front/ && cp .dist.production .env && npm install && npm run build && pm2 stop nuxt-prod && pm2 start ecosystem.config.js --env production --watch && cd ../; 
