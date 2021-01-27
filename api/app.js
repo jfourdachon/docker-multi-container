@@ -65,7 +65,7 @@ app.use(compression());
 app.get('/', (req, res) => {
     res.send('Hello world')
 }) 
-app.use('/values', valuesRouter);
+// app.use('/values', valuesRouter);
 
 
 //  - START SERVER
@@ -73,4 +73,6 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`App running on port ${port}!`);
 });
+
+
 
