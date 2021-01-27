@@ -62,11 +62,12 @@ app.use(compression());
 
 // - ROUTES
 
-const allowedOrigins = ['https://j-unix.com']
+const allowedOrigins = ['https://j-unix.com$']
 // if does not work
 // const allowedOrigins = ['https://j-unix.com$']
 const corsOptions = {
     origin (origin, callback) {
+        console.log({origin})
         let valid = false;
         for (let allowedOrigin of allowedOrigins) {
             if (new RegExp(allowedOrigin).test(origin)) {
