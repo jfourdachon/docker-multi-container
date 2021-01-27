@@ -62,10 +62,30 @@ app.use(compression());
 
 // - ROUTES
 
+const allowedOrigins = ['https://j-unix.com']
+// if does not work
+// const allowedOrigins = ['https://j-unix.com$']
+const corsOptions = {
+    origin (origin, callback) {
+        let valid = false;
+        for (let allowedOrigin of allowedOrigins) {
+            if (new RegExp(allowedOrigin).test(origin)) {
+                valid = true;
+            }
+        }
+        if (valid) {
+            callback(null, true);
+        } else {
+            console.log('Not allowed by CORS');
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+};
+
 app.get('/', (req, res) => {
     res.send('Hello world')
 }) 
-// app.use('/values', valuesRouter);
+app.use('/values', cors(corsOptions), valuesRouter);
 
 
 //  - START SERVER
