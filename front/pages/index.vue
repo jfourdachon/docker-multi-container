@@ -37,10 +37,12 @@ export default {
   },
   methods: {
     async fetchValues() {
+        console.log(process.env.VUE_APP_API_BASE_URL)
       const response = await axios.get(process.env.VUE_APP_API_BASE_URL + '/values/current')
       this.values = response.data.data
     },
     async fetchIndexes() {
+
       const response = await axios.get(process.env.VUE_APP_API_BASE_URL + '/values/all')
       this.seenIndexes = response.data.data[0].values
     },

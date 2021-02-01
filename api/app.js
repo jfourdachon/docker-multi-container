@@ -82,6 +82,10 @@ const corsOptions = {
     }
 };
 
+if (process.env.NODE_ENV === 'development') {
+    allowedOrigins.push('http://localhost:8080')
+}
+
 app.get('/', (req, res) => {
     res.send('Hello world')
 }) 
