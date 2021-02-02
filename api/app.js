@@ -16,7 +16,7 @@ const valuesRouter = require('./routes/values.route');
 
 
 const app = express();
-
+app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -62,24 +62,14 @@ app.use(compression());
 // - ROUTES
 
 const allowedOrigins = ['https://j-unix.com$']
-// if does not work
-// const allowedOrigins = ['https://j-unix.com$']
 const corsOptions = {
-    origin (origin, callback) {
-        console.log(origin)
-        let valid = false;
-        for (let allowedOrigin of allowedOrigins) {
-            if (new RegExp(allowedOrigin).test(origin)) {
-                valid = true;
-            }
-        }
-        if (valid) {
-            callback(null, true);
+    origin: function (origin, callback) {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+          callback(null, true)
         } else {
-            console.log('Not allowed by CORS');
-            callback(new Error('Not allowed by CORS'));
+          callback(new Error('Not allowed by CORS'))
         }
-    }
+      }
 };
 
 if (process.env.NODE_ENV === 'development') {

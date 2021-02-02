@@ -64,3 +64,5 @@ sw.*
 *.swp
 # ApiDoc
 apiDoc/
+# Vs code settings
+.vscode/

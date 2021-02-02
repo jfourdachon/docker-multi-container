@@ -13,15 +13,13 @@ services:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - COMPLEX_DATABASE
-  client:
+  front:
     build: 
       dockerfile: Dockerfile.dev
-      context: ./client
+      context: ./front
     volumes: 
       - /app/node_modules
-      - ./client:/app
-    environment:
-      - CHOKIDAR_USEPOLLING=true
+      - ./front:/app
   worker:
     build:
       dockerfile: Dockerfile.dev
@@ -42,4 +40,4 @@ services:
       - '8080:80'
     depends_on:
       - api
-      - client
+      - front

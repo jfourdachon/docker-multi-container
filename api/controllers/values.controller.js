@@ -20,8 +20,8 @@ const valuesController = {
     });
   },
   postValue: async (req, res) => {
-    const index = req.body.index;
-    if (parseInt(index > 40)) {
+    const {index} = req.body;
+    if (parseInt(index) > 40) {
       return res.status(422).json({
         status: 'failed',
         message: 'Index too high',

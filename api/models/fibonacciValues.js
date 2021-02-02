@@ -6,6 +6,6 @@ const fibonacciValuesSchema = new mongoose.Schema({
       }
 });
 
-const FibValues = mongoose.model('Fibonacci_Values', fibonacciValuesSchema);
+const FibValues = mongoose.model('fibonacci_values', fibonacciValuesSchema);
 
 module.exports = FibValues;
