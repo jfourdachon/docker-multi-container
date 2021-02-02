@@ -26,38 +26,38 @@ app.use(compression());
 
 // Mongoose Client Setup
 
-// mongoose.Promise = Promise;
+mongoose.Promise = Promise;
 
-// mongoose.connection.on('connected', () => {
-//   console.log('Connection Established');
-// });
+mongoose.connection.on('connected', () => {
+  console.log('Connection Established');
+});
 
-// mongoose.connection.on('reconnected', () => {
-//   console.log('Connection Reestablished');
-// });
+mongoose.connection.on('reconnected', () => {
+  console.log('Connection Reestablished');
+});
 
-// mongoose.connection.on('disconnected', () => {
-//   console.log('Connection Disconnected');
-// });
+mongoose.connection.on('disconnected', () => {
+  console.log('Connection Disconnected');
+});
 
-// mongoose.connection.on('close', () => {
-//   console.log('Connection Closed');
-// });
+mongoose.connection.on('close', () => {
+  console.log('Connection Closed');
+});
 
-// mongoose.connection.on('error', (error) => {
-//   console.log(`ERROR: ${error}`);
-// });
+mongoose.connection.on('error', (error) => {
+  console.log(`ERROR: ${error}`);
+});
 
-// const dbConnect = async () => {
-//   await mongoose.connect(process.env.COMPLEX_DATABASE, {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useFindAndModify: false,
-//     useUnifiedTopology: true,
-//   });
-// };
+const dbConnect = async () => {
+  await mongoose.connect(process.env.COMPLEX_DATABASE, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  });
+};
 
-// dbConnect().catch((error) => console.error({ error }));
+dbConnect().catch((error) => console.error({ error }));
 
 // - ROUTES
 
