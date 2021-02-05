@@ -1,0 +1,18 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t jfourdachon/nuxt-test -f ./front/Dockerfile.dev ./front
+  # to run others test
+  #- docker build jfourdachon/api-test -f ./api.Dockerfile.dec ./api
+
+script:
+  - docker run -e CI=true jfourdachon/nuxt-quizz npm run test
+
+after_success:
+  - docker nuild -t jfourdachon/multi-front ./front
+  - docker nuild -t jfourdachon/multi-nginx ./nginx
+  - docker nuild -t jfourdachon/multi-api ./api
+  - docker nuild -t jfourdachon/multi-worker ./worker
+
