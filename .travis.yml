@@ -11,10 +11,10 @@ script:
   - docker run -e CI=true jfourdachon/nuxt-test npm run test
 
 after_success:
-  - docker nuild -t jfourdachon/multi-front ./front
-  - docker nuild -t jfourdachon/multi-nginx ./nginx
-  - docker nuild -t jfourdachon/multi-api ./api
-  - docker nuild -t jfourdachon/multi-worker ./worker
+  - docker build -t jfourdachon/multi-front ./front
+  - docker build -t jfourdachon/multi-nginx ./nginx
+  - docker build -t jfourdachon/multi-api ./api
+  - docker build -t jfourdachon/multi-worker ./worker
 
   # Login to docker CLI
   # Set docker credentials in travis.com -> project settings
