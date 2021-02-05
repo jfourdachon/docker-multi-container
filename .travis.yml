@@ -16,3 +16,14 @@ after_success:
   - docker nuild -t jfourdachon/multi-api ./api
   - docker nuild -t jfourdachon/multi-worker ./worker
 
+  # Login to docker CLI
+  # Set docker credentials in travis.com -> project settings
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID"  --password-stdin
+
+  # Take those images and push them to docker hub
+  - docker push jfourdachon/multi-front
+  - docker push jfourdachon/multi-nginx
+  - docker push jfourdachon/multi-api
+  - docker push jfourdachon/multi-worker
+
+  
