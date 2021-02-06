@@ -1,6 +1,6 @@
 <template>
   <b-container class="main-nav">
-    <b-row align-h="between" align-v="center" class="navbar m-0 p-0">
+    <b-row align-h="between" align-v="center" class="navbar mx-0 mb-4 p-0">
       <b-col  class="text-center py-3 border">
         <nuxt-link to="/">
           <h5 class="pt-3 pb-3">Home</h5>
