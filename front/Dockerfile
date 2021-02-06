@@ -7,13 +7,10 @@ ENV APP_ROOT /app
 WORKDIR ${APP_ROOT}
 
 # update and install dependency
-RUN apk update && apk upgrade
-RUN apk add git
-
 
 COPY ./package.json ./
 
-RUN npm ci
+RUN npm install
 
 COPY . .
 
