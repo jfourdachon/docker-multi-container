@@ -26,4 +26,8 @@ after_success:
   - docker push jfourdachon/multi-api
   - docker push jfourdachon/multi-worker
 
+# safelist
+branches:
+  only:
+  - main
   
