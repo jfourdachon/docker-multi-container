@@ -1,5 +1,5 @@
 config:
-  target: "https://api.j-unix.com"
+  target: "https://j-unix.com"
   phases:
     - duration: 60
       arrivalRate: 5
