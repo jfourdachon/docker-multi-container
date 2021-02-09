@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <b-row>
+    <b-row class="m-0">
       <label>Enter your index:</label>
       <b-form-input v-model="index" type="number"></b-form-input>
-      <b-button variant="primary" @click="handleSubmit">Submit</b-button>
+      <b-button variant="primary" @click="handleSubmit" class="mt-3">Submit</b-button>
     </b-row>
     <div>
       <h3>Indices I have seen:</h3>
