@@ -31,7 +31,7 @@ services:
       context: ./nginx
     ports:
       - '80:80'
-      - “443:443”
+      - '443:443'
     volumes: 
      - /etc/nginx/ssl:/etc/nginx/ssl
     depends_on:
