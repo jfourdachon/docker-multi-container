@@ -1,0 +1,23 @@
+config:
+  target: "https://api.j-unix.com"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: Warm up
+    - duration: 120
+      arrivalRate: 25
+      rampTo: 50
+      name: Ramp up load
+    - duration: 180
+      arrivalRate: 65
+      name: Sustained load
+scenarios:
+  # We define one scenario:
+  - name: "Search and buy"
+    flow:
+      - get:
+          url: "/all"
+  - name: "Search and other"
+    flow:
+      - get:
+          url: "/other-page"
