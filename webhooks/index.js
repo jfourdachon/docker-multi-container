@@ -6,13 +6,11 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const compression = require('compression');
 
-// const webhookRouter = require('./routes/webhook.route');
+const webhookRouter = require('./routes/webhooks.route');
 
 
 dotenv.config();
 
-
-console.log(process.env.WEBHOOK_DATABASE)
 
 const app = express();
 app.use(cors())
@@ -27,25 +25,25 @@ app.use(compression());
 
 mongoose.Promise = Promise;
 
-// mongoose.connection.on('connected', () => {
-//   console.log('Connection Established');
-// });
+mongoose.connection.on('connected', () => {
+  console.log('Connection Established');
+});
 
-// mongoose.connection.on('reconnected', () => {
-//   console.log('Connection Reestablished');
-// });
+mongoose.connection.on('reconnected', () => {
+  console.log('Connection Reestablished');
+});
 
-// mongoose.connection.on('disconnected', () => {
-//   console.log('Connection Disconnected');
-// });
+mongoose.connection.on('disconnected', () => {
+  console.log('Connection Disconnected');
+});
 
-// mongoose.connection.on('close', () => {
-//   console.log('Connection Closed');
-// });
+mongoose.connection.on('close', () => {
+  console.log('Connection Closed');
+});
 
-// mongoose.connection.on('error', (error) => {
-//   console.log(`ERROR: ${error}`);
-// });
+mongoose.connection.on('error', (error) => {
+  console.log(`ERROR: ${error}`);
+});
 
 const dbConnect = async () => {
   await mongoose.connect(process.env.WEBHOOK_DATABASE, {
@@ -78,9 +76,9 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.get('/', (req, res) => {
-    res.send('Hello world')
-}) 
-// app.use('/values', cors(corsOptions), valuesRouter);
+    return res.send('hello boy');
+})
+app.use('/soma', webhookRouter);
 
 
 //  - START SERVER
