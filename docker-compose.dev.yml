@@ -31,6 +31,13 @@ services:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
   # DISABLED FOR HOT RELAD IN DEV
+  webhooks:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./webhooks
+    volumes: 
+      - /app/node_modules
+      - ./webhooks:/app
   nginx:
     restart: always
     build:

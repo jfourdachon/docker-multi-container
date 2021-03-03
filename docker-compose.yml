@@ -23,6 +23,10 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+  webhooks:
+    build:
+      dockerfile: Dockerfile
+      context: ./webhooks
   # DISABLED FOR HOT RELAD IN DEV
   nginx:
     restart: always
