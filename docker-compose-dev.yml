@@ -5,39 +5,46 @@ services:
   api: 
     build:
       context: ./api
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
+    volumes: 
+      - /app/node_modules
+      - ./api:/app
     environment: 
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - COMPLEX_DATABASE
   front:
     build: 
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./front
-    command:
-      "npm run start"
+    volumes: 
+      - /app/node_modules
+      - ./front:/app
   worker:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./worker
+    volumes: 
+      - /app/node_modules
+      - ./worker:/app
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+  # DISABLED FOR HOT RELAD IN DEV
   webhooks:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./webhooks
-  # DISABLED FOR HOT RELAD IN DEV
+    volumes: 
+      - /app/node_modules
+      - ./webhooks:/app
   nginx:
     restart: always
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./nginx
     ports:
-      - '80:80'
-      - '443:443'
-    volumes: 
-     - /etc/certifs:/etc/nginx/ssl
+      - '8080:80'
     depends_on:
       - api
       - front
