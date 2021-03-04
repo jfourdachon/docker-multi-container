@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const compression = require('compression');
+const rateLimit = require('express-rate-limit');
+
 
 const webhookRouter = require('./routes/webhooks.route');
 
@@ -20,6 +22,16 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(morgan('combined'));
 app.use(compression());
+
+// Limit requests from same IP
+const limiter = rateLimit({
+    max: 100,
+    windowMs: 60 * 60 * 1000,
+    message: 'Too many requests from this IP, please try again in an hour!'
+  });
+
+  // Can apply this limiter on specific route -> ()app.user('/users', limiter)
+app.use(limiter);
 
 // Mongoose Client Setup
 
