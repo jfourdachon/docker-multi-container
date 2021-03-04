@@ -70,27 +70,27 @@ dbConnect().catch((error) => console.error({ error }));
 
 // - ROUTES
 
-const allowedOrigins = ['https://j-unix.com']
-const corsOptions = {
-    origin: function (origin, callback) {
-        console.log({origin})
+// const allowedOrigins = ['*']
+// const corsOptions = {
+//     origin: function (origin, callback) {
+//         console.log({origin})
 
-        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-          callback(null, true)
-        } else {
-          callback(new Error('Not allowed by CORS'))
-        }
-      }
-};
+//         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+//           callback(null, true)
+//         } else {
+//           callback(new Error('Not allowed by CORS'))
+//         }
+//       }
+// };
 
-if (process.env.NODE_ENV === 'development') {
-    allowedOrigins.push('*')
-}
+// if (process.env.NODE_ENV === 'development') {
+//     allowedOrigins.push('*')
+// }
 
-app.get('/', (req, res) => {
-    return res.send('hello boy');
-})
-app.use('/soma', webhookRouter);
+// app.get('/', (req, res) => {
+//     return res.send('hello');
+// })
+app.use('/checkout', webhookRouter);
 
 
 //  - START SERVER
