@@ -1,3 +1,4 @@
+const { createUserService } = require("../service/user.service");
 
 
 exports.createFreeSomaUser = async (req, res) => {
