@@ -87,8 +87,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const middleware = (req, res, next) => {
-    var host = req.headers.host;
-    console.log({host})
+    var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+    console.log({fullUrl})
     next()
 }
 console.log(process.env.NODE_ENV)
