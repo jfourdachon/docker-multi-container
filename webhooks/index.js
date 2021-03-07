@@ -73,7 +73,6 @@ dbConnect().catch((error) => console.error({ error }));
 const allowedOrigins = ['https://checkout.kaji.com']
 const corsOptions = {
     origin: function (origin, callback) {
-        console.log({origin})
 
         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
           callback(null, true)
@@ -87,9 +86,14 @@ if (process.env.NODE_ENV === 'development') {
     allowedOrigins.push('*')
 }
 
+const middleware = (req, res, next) => {
+    var host = req.headers.host;
+    console.log({host})
+    next()
+}
 console.log(process.env.NODE_ENV)
 
-app.use('/checkout', cors(corsOptions), webhookRouter);
+app.use('/checkout', middleware, webhookRouter);
 
 
 //  - START SERVER
