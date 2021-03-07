@@ -70,7 +70,7 @@ dbConnect().catch((error) => console.error({ error }));
 
 // - ROUTES
 
-const allowedOrigins = ['https://checkout.kajabi.com']
+const allowedOrigins = ['https://checkout.kaji.com']
 const corsOptions = {
     origin: function (origin, callback) {
         console.log({origin})
@@ -86,6 +86,8 @@ const corsOptions = {
 if (process.env.NODE_ENV === 'development') {
     allowedOrigins.push('*')
 }
+
+console.log(process.env.NODE_ENV)
 
 app.use('/checkout', cors(corsOptions), webhookRouter);
 
