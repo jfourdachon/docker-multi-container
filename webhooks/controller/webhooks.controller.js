@@ -2,7 +2,7 @@ const { createUserService } = require("../service/user.service");
 
 
 exports.createFreeSomaUser = async (req, res) => {
-    const { member_email, member_name, offer_title} = req.body;
+    const { member_email, member_name, offer_title} = req.body.payload;
     const newUser = {
         email: member_email,
         username: member_name,
@@ -18,7 +18,7 @@ exports.createFreeSomaUser = async (req, res) => {
 }
 
 exports.createFreeGoldenRulesUser = async (req, res) => {
-    const { member_email, member_name, offer_title} = req.body;
+    const { member_email, member_name, offer_title} = req.body.payload;
     const newUser = {
         email: member_email,
         username: member_name,

@@ -4,9 +4,6 @@ const Contact = require('../model/user');
 exports.createUserService = async (args) => {
   try {
     const newUser = await User.create(args);
-    console.log(
-        {args}
-    )
     console.log({ newUser });
   } catch (error) {
     throw new Error(`Error while creating Doc: ${error}`, 404);
