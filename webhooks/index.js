@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -16,10 +15,8 @@ dotenv.config();
 
 const app = express();
 app.use(cors())
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+app.use(express.json({ limit: '10kb' }));
+
 app.use(morgan('combined'));
 app.use(compression());
 
@@ -70,32 +67,23 @@ dbConnect().catch((error) => console.error({ error }));
 
 // - ROUTES
 
-const allowedOrigins = ['https://checkout.kaji.com']
-const corsOptions = {
-    origin: function (origin, callback) {
+// const allowedOrigins = ['https://checkout.kaji.com']
+// const corsOptions = {
+//     origin: function (origin, callback) {
 
-        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-          callback(null, true)
-        } else {
-          callback(new Error('Not allowed by CORS'))
-        }
-      }
-};
+//         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+//           callback(null, true)
+//         } else {
+//           callback(new Error('Not allowed by CORS'))
+//         }
+//       }
+// };
 
-if (process.env.NODE_ENV === 'development') {
-    allowedOrigins.push('*')
-}
+// if (process.env.NODE_ENV === 'development') {
+//     allowedOrigins.push('*')
+// }
 
-const middleware = (req, res, next) => {
-    var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-    var header = req.headers;
-
-    console.log({header})
-    next()
-}
-console.log(process.env.NODE_ENV)
-
-app.use('/checkout', middleware, webhookRouter);
+app.use('/checkout', webhookRouter);
 
 
 //  - START SERVER
