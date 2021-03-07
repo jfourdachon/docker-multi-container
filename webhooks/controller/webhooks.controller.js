@@ -1,6 +1,6 @@
 
 
-exports.createFreeSomaUser = (req, res) => {
+exports.createFreeSomaUser = async (req, res) => {
     const { member_email, member_name, offer_title} = req.body;
     const newUser = {
         email: member_email,
