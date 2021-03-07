@@ -4,11 +4,14 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
   },
-  status: {
+  username: {
     type: String,
   },
+  hygieOffer: {
+      type: String
+  }
 });
 
-const User = mongoose.model('user', userSchema);
+const User = mongoose.model('users', userSchema);
 
 module.exports = User;
