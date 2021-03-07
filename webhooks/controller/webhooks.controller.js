@@ -1,27 +1,33 @@
 
 
 exports.createFreeSomaUser = (req, res) => {
-    console.log('url: ')
-    console.log(req.url)
-    console.log('query: ')
-    console.log(req.query)
-    console.log('params: ')
-    console.log(req.params)
-    console.log('body: ')
-    console.log(req.body)
+    const { member_email, member_name, offer_title} = req.body;
+    const newUser = {
+        email: member_email,
+        username: member_name,
+        hygieOffer: offer_title
+    }
+    try {
+        await createUserService(newUser)
+        return res.status(200).end();
 
-    return res.status(200).end();
+    } catch (error) {
+        throw Error(error)
+    }
 }
 
-exports.createFreeGoldenRulesUser = (req, res) => {
-    console.log('url: ')
-    console.log(req.url)
-    console.log('query: ')
-    console.log(req.query)
-    console.log('params: ')
-    console.log(req.params)
-    console.log('body: ')
-    console.log(req.body)
-    
-    return res.status(200).end();
+exports.createFreeGoldenRulesUser = async (req, res) => {
+    const { member_email, member_name, offer_title} = req.body;
+    const newUser = {
+        email: member_email,
+        username: member_name,
+        hygieOffer: offer_title
+    }
+    try {
+        await createUserService(newUser)
+        return res.status(200).end();
+
+    } catch (error) {
+        throw Error(error)
+    }
 }
