@@ -9,7 +9,12 @@ const userSchema = new mongoose.Schema({
   },
   hygieOffer: {
       type: String
-  }
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+    select: false
+  },
 });
 
 const User = mongoose.model('User', userSchema);
