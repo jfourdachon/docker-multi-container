@@ -70,7 +70,7 @@ dbConnect().catch((error) => console.error({ error }));
 
 // - ROUTES
 
-const allowedOrigins = ['*']
+const allowedOrigins = ['https://checkout.kajabi.com']
 const corsOptions = {
     origin: function (origin, callback) {
         console.log({origin})
