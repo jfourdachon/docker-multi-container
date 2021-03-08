@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
       type: String
   },
   offerId: {
-      type: any
+      type: Number
   },
   createdAt: {
     type: Date,
