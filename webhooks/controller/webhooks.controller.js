@@ -2,11 +2,12 @@ const { createUserService } = require("../service/user.service");
 
 
 exports.createFreeSomaUser = async (req, res) => {
-    const { member_email, member_name, offer_title} = req.body.payload;
+    const { member_email, member_name, offer_title, offer_id} = req.body.payload;
     const newUser = {
         email: member_email,
         username: member_name,
-        hygieOffer: offer_title
+        hygieOffer: offer_title,
+        offerId: offer_id
     }
     try {
         await createUserService(newUser)
@@ -18,14 +19,14 @@ exports.createFreeSomaUser = async (req, res) => {
 }
 
 exports.createFreeGoldenRulesUser = async (req, res) => {
-    const { member_email, member_name, offer_title} = req.body.payload;
+    const { member_email, member_name, offer_title, offer_id} = req.body.payload;
     const newUser = {
         email: member_email,
         username: member_name,
-        hygieOffer: offer_title
+        hygieOffer: offer_title,
+        offerId: offer_id
     }
     try {
-        console.log(req.body.payload)
         await createUserService(newUser)
         return res.status(200).end();
 
