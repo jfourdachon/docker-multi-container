@@ -25,7 +25,8 @@ exports.createFreeGoldenRulesUser = async (req, res) => {
         hygieOffer: offer_title
     }
     try {
-        await createUserService({...req.body.payload, newUser})
+        console.log(req.body.payload)
+        await createUserService(newUser)
         return res.status(200).end();
 
     } catch (error) {
