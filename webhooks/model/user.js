@@ -10,6 +10,9 @@ const userSchema = new mongoose.Schema({
   hygieOffer: {
       type: String
   },
+  offerId: {
+      type: any
+  },
   createdAt: {
     type: Date,
     default: Date.now(),
