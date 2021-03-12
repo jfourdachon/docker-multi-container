@@ -3,6 +3,7 @@ const { createUserService } = require("../service/user.service");
 
 exports.createFreeSomaUser = async (req, res) => {
     const { member_email, member_name, offer_title, offer_id} = req.body.payload;
+    console.log({req})
     const newUser = {
         email: member_email,
         username: member_name,
